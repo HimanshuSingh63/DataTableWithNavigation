@@ -82,7 +82,13 @@ export default class RelatedPlayer extends NavigationMixin(LightningElement ){
         console.log('Playrer Id' , player.Id);
 
         if(player.Id){
-            thisNavigationMixin.Navigate
+           this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: player.Id,
+                    actionName: 'view',
+                },
+            })
 
         }
 
