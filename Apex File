@@ -1,0 +1,22 @@
+// Declaring a public class with sharing keyword to enforce the sharing rules of the current user
+public with sharing class getPlayer {
+    // AuraEnabled annotation to enable client and server-side access to the Apex method
+    @AuraEnabled
+    // Method to get the list of players based on the selected Id
+    public static List<Player__c>  getPlayerList(Id SelectedId){
+        try {
+            // Query to fetch the player records related to the selected Id
+            List<Player__c> playerList=[SELECT Id,Name,Country__c FROM Player__c WHERE Cricket_Team__c=:SelectedId];
+        
+            // Check if the player list is not empty
+            if(!playerList.isEmpty()){
+                return playerList; // Return the player list
+            }
+            return null; // Return null if no players found
+        
+        } catch (Exception e) {
+            // Catch any exceptions and throw an AuraHandledException with the error message
+            throw new AuraHandledException(e.getMessage());
+        }
+    } 
+}
