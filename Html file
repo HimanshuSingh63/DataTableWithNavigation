@@ -1,0 +1,28 @@
+<template>
+
+    <!-- Making button to show or hide data table -->
+    <div class="slds-m-top_small slds-m-button_medium">
+        <lightning-button
+              variant="brand"
+              label={showPlayer}
+              title="Show"
+              onclick={handleclick}
+              class="slds-m-left_x-small">
+        </lightning-button>
+
+    </div>
+    <!-- Showing Data in Datatable -->
+    <template if:true={isVisible}>
+    <div>
+        <lightning-datatable key-field="id"
+              data={data}
+              columns={columns}
+              onrowaction={handleRowAction}
+              hide-checkbox-column>
+        </lightning-datatable>
+    </div>
+
+    </template>
+
+
+</template>
